@@ -180,7 +180,7 @@ fun CheckboxComponent(value: String, onTextSelected: (String) -> Unit) {
         }
 
         Checkbox(checked = checkedState.value,
-            onCheckedChange = { checkedState.value != checkedState.value })
+            onCheckedChange = { checkedState.value = !checkedState.value })
         ClickableTextComponent(value = value, onTextSelected = onTextSelected)
     }
 }
