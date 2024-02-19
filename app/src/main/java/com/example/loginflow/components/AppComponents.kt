@@ -78,14 +78,19 @@ fun HeadingTextComponent(value: String) {
     )
 }
 
-
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTextFieldComponent(labelValue: String, painterResource: Painter) {
+fun MyTextFieldComponent(
+    labelValue: String,
+    painterResource: Painter,
+    onTextSelected: (String) -> Unit
+) {
 
     val textValue = remember {
         mutableStateOf("")
     }
+
+    val localFocusManager = LocalFocusManager.current
 
     OutlinedTextField(
         modifier = Modifier
@@ -102,7 +107,10 @@ fun MyTextFieldComponent(labelValue: String, painterResource: Painter) {
         value = textValue.value,
         singleLine = true,
         maxLines = 1,
-        onValueChange = { textValue.value = it },
+        onValueChange = {
+            textValue.value = it
+            onTextSelected(it)
+        },
         leadingIcon = {
             Icon(painter = painterResource, contentDescription = "")
         },
@@ -111,7 +119,11 @@ fun MyTextFieldComponent(labelValue: String, painterResource: Painter) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PasswordTextFieldComponent(labelValue: String, painterResource: Painter) {
+fun PasswordTextFieldComponent(
+    labelValue: String,
+    painterResource: Painter,
+    onTextSelected: (String) -> Unit
+) {
     val localFocusManager = LocalFocusManager.current
     val password = remember {
         mutableStateOf("")
@@ -142,7 +154,10 @@ fun PasswordTextFieldComponent(labelValue: String, painterResource: Painter) {
             localFocusManager.clearFocus()
         },
         maxLines = 1,
-        onValueChange = { password.value = it },
+        onValueChange = {
+            password.value = it
+            onTextSelected(it)
+        },
         leadingIcon = {
             Icon(painter = painterResource, contentDescription = "")
         },
@@ -217,9 +232,11 @@ fun ClickableTextComponent(value: String, onTextSelected: (String) -> Unit) {
 }
 
 @Composable
-fun ButtonComponent(value: String) {
+fun ButtonComponent(value: String, onButtonClicked: () -> Unit) {
     Button(
-        onClick = { /*TODO*/ },
+        onClick = {
+            onButtonClicked.invoke()
+        },
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(48.dp),

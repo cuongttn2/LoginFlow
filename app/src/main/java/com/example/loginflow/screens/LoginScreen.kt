@@ -41,26 +41,42 @@ fun LoginScreen() {
                 .background(Color.White)
         ) {
             NormalTextComponent(value = stringResource(id = R.string.login))
+
             HeadingTextComponent(value = stringResource(id = R.string.welcome))
+
             Spacer(modifier = Modifier.height(20.dp))
 
             MyTextFieldComponent(
                 labelValue = stringResource(id = R.string.email),
-                painterResource = painterResource(id = R.drawable.message)
+                painterResource = painterResource(id = R.drawable.message),
+                onTextSelected = {
+
+                }
             )
 
             PasswordTextFieldComponent(
                 labelValue = stringResource(id = R.string.pass_word),
-                painterResource = painterResource(id = R.drawable.profile)
+                painterResource = painterResource(id = R.drawable.profile),
+                onTextSelected = {
+
+                }
             )
 
             Spacer(modifier = Modifier.height(40.dp))
+
             UnderLinedNormalTextComponent(value = stringResource(id = R.string.forgot_password))
 
             Spacer(modifier = Modifier.height(40.dp))
-            ButtonComponent(value = stringResource(id = R.string.login))
+
+            ButtonComponent(
+                value = stringResource(id = R.string.login),
+                onButtonClicked = {
+
+                }
+            )
 
             Spacer(modifier = Modifier.height(20.dp))
+
             DividerTextComponent()
 
             ClickableLoginTextComponent(
