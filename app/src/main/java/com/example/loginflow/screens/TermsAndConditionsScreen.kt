@@ -3,7 +3,7 @@ package com.example.loginflow.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Surface
+import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -27,7 +27,7 @@ fun TermsAndConditionsScreen() {
         HeadingTextComponent(value = stringResource(id = R.string.terms_and_conditions_header))
     }
     SystemBackButtonHandler {
-        PostOfficeAppRouter.navigationTo(Screen.SignUpScreen)
+        PostOfficeAppRouter.navigateTo(Screen.SignUpScreen)
     }
 }
 
